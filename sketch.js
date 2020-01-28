@@ -10,6 +10,11 @@ let ukeButton;
 let trainButton;
 let penButton;
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function modelReady(){
     console.log('Model is ready!!!!');
    mobilenet.predict(gotResults);
@@ -59,7 +64,8 @@ function gotResults(error,results){
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function setup (){
-    createCanvas(640,480);
+    //createCanvas(640,480);
+    document.querySelector('#canva')
     //**createImg is function from p5 liberary to draw image on dom element
    // puffin = createImg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-vdc5uaRFoQ7wOJziy3ZmtwUm_eKX5RC_CzUas-ZD95-WP0tnfA&s',imageReady);
    //**create video or record video */ 

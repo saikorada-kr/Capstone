@@ -14,10 +14,39 @@
       <!-- ml5 -->
       <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
       <script src="sketch.js"></script>
+      <script type = "text/javascript"
+      src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+   <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+   </script>
       <title>Document</title>
     </head>
 
     <body>
+      
+      <div style="background-color: #455a64; height: 685px; width:280px; position:absolute; top: 152px">
+        <ul class = "collapsible" data-collapsible = "accordion" style="margin-top: 0px;
+        margin-bottom: 0px;">
+          <li>
+             <div class = "collapsible-header" style="background-color: transparent; color:white">
+
+                <i class = "material-icons"style="color: white;">filter_drama</i>First Section</div>
+             <div class = "collapsible-body"style="color: white; background-color: #5EAEB5;"><p style="background-color: transparent;">This is first section.</pstyle="background-color: transparent;></div>
+          </li>
+          
+          <li>
+             <div class = "collapsible-header" style="background-color: transparent; color:white">
+                <i class = "material-icons">place</i>Second Section</div>
+             <div class = "collapsible-body"style="color: white; background-color: #5EAEB5;"><p>This is second section.</p></div>
+          </li>
+          
+          <li>
+             <div class = "collapsible-header"style="background-color: transparent; color:white">
+                <i class = "material-icons">whatshot</i>Third Section</div>
+             <div class = "collapsible-body"style="color: white; background-color: #5EAEB5;"><p>This is third section.</p></div>
+          </li>
+       </ul>
+      </div>
+       
       <script type="text/javascript" src="js/materialize.min.js"></script>
      
  
@@ -36,20 +65,20 @@
         </nav>
         <div style = "background-color: #e0f7fa; height:690px; background-image: url('/home/sai/Documents/capstone/third.jpg');">
           
-                    <i class="material-icons" style="position:absolute; top: 170px; left:100px; font-size:90px; color:white;">camera_alt</i>                </div>
-                    <i class="material-icons" style="position:absolute; top: 170px; left:850px; font-size:90px;color:white;">speaker_notes</i>
+                    <i class="material-icons" style="position:absolute; top: 170px; left:330px; font-size:90px; color:white;">camera_alt</i>                </div>
+                    <i class="material-icons" style="position:absolute; top: 170px; left:1050px; font-size:90px;color:white;">speaker_notes</i>
             
-            <div class="col s12 m2" style="height: 400px;width: 1000px; position:absolute; top: 250px; left: 850px; background-color: #ffffff ">
+            <div class="col s12 m2" style="height: 400px;width: 800px; position:absolute; top: 250px; left: 1050px; background-color: #ffffff ">
                 <textarea class="z-depth-3" id= "hello"style="height: 400px; font-size: 90px"></textarea>
               </div>
          
              <div class="col s12 m2">
-                <canvas class="z-depth-5"style="height:480px;width:640px; position: absolute; top: 250px; left: 100px; background-color:black">z-depth-5</canvas>
+                <canvas class="z-depth-5" id = "canva" style="height:480px;width:640px; position: absolute; top: 250px; left: 330px; background-color:black">z-depth-5</canvas>
               </div>
-              <div style= "position:absolute; top:750px; left:100px">
-                <a class="waves-effect waves-light btn-large">Button</a>
-                <a class="waves-effect waves-light btn-large">Button</a>
-                <a class="waves-effect waves-light btn-large">Button</a>
+              <div style= "position:absolute; top:750px; left:330px">
+                <a class="waves-effect waves-light btn-large">HI</a>
+                <a class="waves-effect waves-light btn-large">BYE</a>
+                <a class="waves-effect waves-light btn-large">TRAIN</a>
               </div>
 
         </div>
@@ -60,8 +89,8 @@
             <div class="container">
               <div class="row">
                 <div class="col l6 s12">
-                  <h5 class="white-text">Footer Content</h5>
-                  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                  <h5 class="white-text" style = "position:absolute; left: 10px">Footer Content</h5>
+                  <p class="grey-text text-lighten-4"style = "position:absolute; left: 10px; top: 930px;">You can use rows and columns here to organize your footer content.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                   <h5 class="white-text">Links</h5>

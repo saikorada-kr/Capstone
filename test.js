@@ -1,12 +1,24 @@
 
-const image = document.getElementById('image'); // The image we want to classify
-const result = document.getElementById('result'); // The result tag in the HTML
-const probability = document.getElementById('probability'); // The probability tag in the HTML
+// Grab elements, create settings, etc.
+const video = document.getElementById('video');
 
-// Initialize the Image Classifier method with MobileNet
-ml5.imageClassifier('MobileNet')
-  .then(classifier => classifier.classify(image))
-  .then(results => {
-    result.innerText = results[0].label;
-    probability.innerText = results[0].confidence.toFixed(4);
-  });
+// Create a webcam capture
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then((stream) => {
+    video.srcObject = stream;
+    video.play();
+  })
+
+// Initialize the Image Classifier method with MobileNet passing the video as the
+// second argument and the getClassification function as the third
+ml5.imageClassifier('MobileNet', video)
+  .then(classifier => loop(classifier))
+
+const loop = (classifier) => {
+  classifier.classify()
+    .then(results => {
+      result.innerText = results[0].label;
+      probability.innerText = results[0].confidence.toFixed(4);
+      loop(classifier) // Call again to create a loop
+    })
+}

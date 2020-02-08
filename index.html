@@ -2,8 +2,11 @@
   <!DOCTYPE html>
   <html>
     <head>
+      
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="shortcut icon" href="http://getwallpapers.com/wallpaper/full/c/8/a/915283-top-neuron-wallpapers-1920x1200.jpg">
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +16,32 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
       <!-- ml5 -->
       <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
-      <script src="sketch.js"></script>
+      <script src="train.js"></script>
       <script type = "text/javascript"
       src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
    </script>
       <title>Document</title>
+      
     </head>
 
     <body>
-      
+     <div id="video" width="650" height="490" autoplay  style="height:320px;width:270px; position: absolute; top: 250px; left: 330px; background-color:black; border-radius:5px"></div>
+        
+      <div id="container">
       <div style="background-color: #455a64; height: 685px; width:280px; position:absolute; top: 152px">
         <ul class = "collapsible" data-collapsible = "accordion" style="margin-top: 0px;
         margin-bottom: 0px;">
           <li>
              <div class = "collapsible-header" style="background-color: transparent; color:white">
 
-                <i class = "material-icons"style="color: white;">filter_drama</i>First Section</div>
+                <i class = "material-icons"style="color: white;">filter_drama</i>ABOUT</div>
              <div class = "collapsible-body"style="color: white; background-color: #5EAEB5;"><p style="background-color: transparent;">This is first section.</pstyle="background-color: transparent;></div>
           </li>
           
           <li>
              <div class = "collapsible-header" style="background-color: transparent; color:white">
-                <i class = "material-icons">place</i>Second Section</div>
+                <i class = "material-icons">place</i>USER GUIDE</div>
              <div class = "collapsible-body"style="color: white; background-color: #5EAEB5;"><p>This is second section.</p></div>
           </li>
           
@@ -56,29 +62,34 @@
           <div class="nav-wrapper">
             <a href="#" class="brand-logo center" style="font-family: fantasy;
             font-size: 90px; position: absolute; float: center; top: 25px;
-        ">Sign Translator</a>
+        ">RAPPORT</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
               <li><i class="extra large material-icons" style="position: absolute;float: left;left: 5%; top:40px; font-size: 100px">gesture</i></li>
               
             </ul>
           </div>
         </nav>
-        <div style = "background-color: #e0f7fa; height:690px; background-image: url('/home/sai/Documents/capstone/third.jpg');">
+        <div style = "background-color: #e0f7fa; height:690px; background-image: url('/home/sai/Documents/soal/Capstone/completed finally!!/third.jpg');">
           
                     <i class="material-icons" style="position:absolute; top: 170px; left:330px; font-size:90px; color:white;">camera_alt</i>                </div>
                     <i class="material-icons" style="position:absolute; top: 170px; left:1050px; font-size:90px;color:white;">speaker_notes</i>
             
-            <div class="col s12 m2" style="height: 400px;width: 800px; position:absolute; top: 250px; left: 1050px; background-color: #ffffff ">
-                <textarea class="z-depth-3" id= "hello"style="height: 400px; font-size: 90px"></textarea>
+            <div class="col s12 m2" style="height: 400px;width: 800px; position:absolute; top: 250px; left: 1050px; background-color: #ffffff; border-radius: 10px;">
+                <textarea id= "hello"style="height: 400px; font-size: 90px; border-radius:10px"></textarea>
               </div>
          
              <div class="col s12 m2">
-                <canvas class="z-depth-5" id = "canva" style="height:480px;width:640px; position: absolute; top: 250px; left: 330px; background-color:black">z-depth-5</canvas>
+               <!-- <video id = "video" autoplay style="height:320px;width:270px; position: absolute; top: 250px; left: 330px; background-color:black"></video>-->
               </div>
               <div style= "position:absolute; top:750px; left:330px">
-                <a class="waves-effect waves-light btn-large">HI</a>
-                <a class="waves-effect waves-light btn-large">BYE</a>
-                <a class="waves-effect waves-light btn-large">TRAIN</a>
+                <a id="btn1"class="waves-effect waves-light btn-large"style="color:black;">I</a>
+                <a id="btn2"class="waves-effect waves-light btn-large"style="color:black;">need</a>
+                <a id="btn3"class="waves-effect waves-light btn-large"style="color:black;">help</a>
+                <a id="btn4"class="waves-effect waves-light btn-large"style="color:black;">HOW</a>
+                <a id="btn5"class="waves-effect waves-light btn-large"style="color:black;">ARE</a>
+                <a id="btn6"class="waves-effect waves-light btn-large"style="color:black;">YOU</a>
+                <a id="btn99"class="waves-effect waves-light btn-large"style="color:black;">TRAIN</a>
+                <a id="btn100"class="waves-effect waves-light btn-large"style="color:black;">SAVE</a>
               </div>
 
         </div>

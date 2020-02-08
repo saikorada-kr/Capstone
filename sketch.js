@@ -1,109 +1,174 @@
-
-//You are creating am image classifier over here and named it mobile net-- 
-//because that is what you are using
 let mobilenet;
 let classifier;
-let video;
-//let puffin;
 let fabel;
 let ukeButton;
+let whistleButton;
 let trainButton;
-let penButton;
+let saveButton;
+let final = [""];
+let accuracy;
+let load;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var predictions = [];
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
 
-function modelReady(){
-    console.log('Model is ready!!!!');
-   mobilenet.predict(gotResults);
-}
+//model will load and starts
+function modelReady() {
+  console.log('Model is ready!!!');
 
-function videoReady(){
-    console.log('video is ready');
-}
-
-function whileTraining(loss){ 
-    if (loss==null){
-        console.log('training complete');
-        classifier.classify(gotResults);
-    } else{
-        console.log(loss);
-    }
+  classifier.load('model.json',customModelReady);
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-function gotResults(error,results){
-    if(error){
-        console.log(error);
-    }else{
-        fabel = results[0].label
-        classifier.classify(gotResults);
-        //console.log(results);
-        // let fabel = results[0].label;
-        // fill(0);
-        // textSize(64);
-        //text(fabel, 10, height-100);
-        //****creating a dom element for the label
-        //createP(fabel);
-       //*** */ accessing DOM
-        document.querySelector('#hello').textContent = label;
-         //**the line below helps to predict contineously */
-         //mobilenet.predict(gotResults);
-    }
+
+
+//webcam will starts
+function videoReady() {
+  console.log('Video is ready!!!');
+  //classifier.load('model.json',customModelReady);
 }
 
-//**this function is used to display image to the canvas
-// function imageReady(){
-//     image(puffin, 0, 0, width, height);
+function customModelReady(){
+  console.log('custom model is ready');
+  label = "model ready";
+  classifier.classify(gotResults);
+}
+
+//while training 
+function whileTraining(loss) {
+  if (loss == null) {
+    console.log('Training Complete');
+    classifier.classify(gotResults);
+  } else {
+    console.log(loss);
+  }
+}
+
+//it will shows result in the from of text
+// function gotResults(error, result) {
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.log(result)
+//      accuracy = result[0].confidence;
+//      if(accuracy>0.95){
+//     fabel=result[0].label;
+//     if (predictions.length > 0) {
+//       var lastPrediction = predictions[predictions.length - 1];
+//       if (lastPrediction !== fabel) {
+//         predictions.push(fabel);
+//       }
+//     } else {
+//       predictions.push(fabel);
+//     }
+//      }
+   
+//     classifier.classify(gotResults);
+//    // document.querySelector('#hello').textContent=fabel;
+//     document.querySelector('#hello').textContent=predictions.join(" ");
+//   }
 // }
 
+//video size and transferring images(features)
+function setup() {
+  noCanvas();
+   //createCanvas(320, 270);
+  video = createCapture(VIDEO);
+  video.parent('#video');
+   // canvas.hide();
+  // video.hide();
+  // background(0);
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+  mobilenet = ml5.featureExtractor('MobileNet',modelReady);
+  //const options = {numLabels: 6}
+  classifier = mobilenet.classification(video, videoReady);
 
-function setup (){
-    //createCanvas(640,480);
-    document.querySelector('#canva')
-    //**createImg is function from p5 liberary to draw image on dom element
-   // puffin = createImg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-vdc5uaRFoQ7wOJziy3ZmtwUm_eKX5RC_CzUas-ZD95-WP0tnfA&s',imageReady);
-   //**create video or record video */ 
-   video = createCapture(VIDEO);
-   video.hide(0);
-   background(0);
-    //**Hide the image using p5 liberary
-    // puffin.hide(0);
-    // image(puffin, 0, 0);
 
-    // **generates image classifier object and stores it in the image--
-    //**classifier object you are using the first element MobileNet as a pre trained model
-    //mobilenet = ml5.imageClassifier('MobileNet',video,modelReady);
-    mobilenet = ml5.featureExtractor('MobileNet',modelReady);
-    classifier = mobilenet.classification(video,videoReady);
-     
-    //**setup button */
-    ukeButton = createButton('guitar');
-    ukeButton.mousePressed(function(){
-        classifier.addImage('guitar');
-    });
+  // const button1 = document.querySelector('#btn1');
 
-    penButton = createButton('pen');
-    penButton.mousePressed(function(){
-        classifier.addImage('pen');
-    });
+  // button1.addEventListener('click', event => {
+  //   classifier.addImage('I');
+  // });
 
-    trainButton = createButton('train');
-    trainButton.mousePressed(function(){
-        classifier.train(whileTraining);
-    });
+  // const button2 = document.querySelector('#btn2');
 
+  // button2.addEventListener('click', event => {
+  //   classifier.addImage('NEED');
+  // });
+
+
+  // const button3 = document.querySelector('#btn3');
+
+  // button3.addEventListener('click', event => {
+  //   classifier.addImage('HELP');
+  // });
+
+  // const button4 = document.querySelector('#btn4');
+
+  // button4.addEventListener('click', event => {
+  //   classifier.addImage('HOW');
+  // });
+
+
+  // const button5 = document.querySelector('#btn5');
+
+  // button5.addEventListener('click', event => {
+  //   classifier.addImage('ARE');
+  // });
+
+  // const button6 = document.querySelector('#btn6');
+
+  // button6.addEventListener('click', event => {
+  //   classifier.addImage('YOU');
+  // });
+
+
+  // const button99 = document.querySelector('#btn99');
+
+  // button99.addEventListener('click', event => {
+  //   classifier.train(whileTraining);
+  // });
+
+  // const button100 = document.querySelector('#btn100');
+
+  // button100.addEventListener('click', event => {
+  //   classifier.save();
+  // });
+
+  
 }
-/////////////////////////////////////////////////////////////////////////////////////
-function draw(){
-    background(0);
-    image(video, 0, 0, 320, 240);
-    fill(255);
-    textSize(16);
-    text(fabel, 10, height-10);
-}
+
+//custom button
+// ukeButton = createButton('hello');
+// ukeButton.mousePressed(function() {
+//   classifier.addImage('hello');
+// });
+// //custom button
+//   whistleButton = createButton('how are u!!');
+//   whistleButton.mousePressed(function() {
+//     classifier.addImage('how are u!!');
+//   });
+
+// //train button
+//   trainButton = createButton('train');
+//   trainButton.mousePressed(function() {
+//     classifier.train(whileTraining);
+//   });
+
+// //for saving dataset()
+// saveButton = createButton('save');
+//   saveButton.mousePressed(function() {
+//     classifier.save();
+//   });
+// }
+
+//text area
+//function draw() {
+  //background(0);
+  //image(video, 0, 0, 320, 270);
+  // fill(255);
+  // textSize(16);
+  //text(fabel, 10, height - 10);
+//}
